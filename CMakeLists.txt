@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(LaneKeepingSystem)
+project(gogo_xycar)
 
 SET(CMAKE_CXX_STANDARD 17)
 SET(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -125,12 +125,12 @@ include_directories(
 )
 
 add_library(modules
-  src/${PROJECT_NAME}/HoughTransformLaneDetector.cpp
-  src/${PROJECT_NAME}/MovingAverageFilter.cpp
-  src/${PROJECT_NAME}/PIDController.cpp
-  src/${PROJECT_NAME}/LaneKeepingSystem.cpp
-  src/${PROJECT_NAME}/StanleyController.cpp
-  src/${PROJECT_NAME}/VehicleModel.cpp
+  src/LaneKeepingSystem/HoughTransformLaneDetector.cpp
+  src/LaneKeepingSystem/MovingAverageFilter.cpp
+  src/LaneKeepingSystem/PIDController.cpp
+  src/LaneKeepingSystem/LaneKeepingSystem.cpp
+  src/LaneKeepingSystem/StanleyController.cpp
+  src/LaneKeepingSystem/VehicleModel.cpp
 )
 
 add_executable(${PROJECT_NAME}_node src/main.cpp)
@@ -140,5 +140,5 @@ target_link_libraries(${PROJECT_NAME}_node
   ${YAML_CPP_LIBRARIES}
   ${catkin_LIBRARIES}
   ${OpenCV_LIBRARIES}
-  
+
 )
