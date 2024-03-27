@@ -5,4 +5,6 @@
     <!-- ROS bag -->
     <node name="rosbag" pkg="rosbag" type="play" args="$(find gogo_xycar)/src/track1.bag"/>
 
+    <!-- Xycar motor -->
+    <include file="$(find xycar_motor)/launch/xycar_motor.launch" />
 </launch>
