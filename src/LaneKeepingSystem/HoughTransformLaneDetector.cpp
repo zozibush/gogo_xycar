@@ -144,7 +144,15 @@ std::pair<int32_t, int32_t> HoughTransformLaneDetector<PREC>::getLanePosition(co
 
     cv::Mat cannyImage;
     cv::Canny(grayImage, cannyImage, mCannyEdgeLowThreshold, mCannyEdgeHighThreshold);
-    cv::Mat ROI = cannyImage(cv::Rect(0, mROIStartHeight, mImageWidth, mROIHeight));
+
+//    cv::Mat ROI = cannyImage(cv::Rect(0, mROIStartHeight, mImageWidth, mROIHeight));
+    cv::Mat mask = cv::Mat::zeros(cannyImage.size(), CV_8UC1);
+    cv::Rect roiRect(0, mROIStartHeight, mImageWidth, mROIHeight);
+    mask(roiRect) = 255;
+
+    cv::Mat ROI;
+    cannyImage.copuTo(ROI, mask)
+
     Lines allLines;
     cv::HoughLinesP(ROI, allLines, kHoughRho, kHoughTheta, mHoughThreshold, mHoughMinLineLength, mHoughMaxLineGap);
 
