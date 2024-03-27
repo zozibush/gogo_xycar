@@ -2,6 +2,17 @@
     <node name="Lane_Keeping_System" pkg="gogo_xycar" type="LaneKeepingSystem_node" output="screen"/>
     <param name="config_path" type="str" value="$(find gogo_xycar)/config/config.yaml"/>
 
+     <!-- usb_cam -->
+    <node name="usb_cam" pkg="usb_cam" type="usb_cam_node" output="screen" >
+        <param name="video_device" value="/dev/videoCAM" />
+        <param name="image_width" value="640" />
+        <param name="image_height" value="480" />
+        <param name="pixel_format" value="yuyv" />
+        <param name="camera_frame_id" value="usb_cam" />
+        <param name="exposure" value="80" />
+        <param name="io_method" value="mmap"/>
+    </node>
+
     <!-- ROS bag -->
     <node name="rosbag" pkg="rosbag" type="play" args="$(find gogo_xycar)/src/track1.bag"/>
 
