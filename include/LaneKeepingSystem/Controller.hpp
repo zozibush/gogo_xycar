@@ -12,6 +12,7 @@
 
 #include <cstdint>
 #include <memory>
+#include <cmath>
 
 namespace Xycar
 {
