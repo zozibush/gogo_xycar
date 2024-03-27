@@ -133,9 +133,9 @@ add_library(modules
   src/LaneKeepingSystem/VehicleModel.cpp
 )
 
-add_executable(${PROJECT_NAME}_node src/main.cpp)
+add_executable(LaneKeepingSystem_node src/main.cpp)
 
-target_link_libraries(${PROJECT_NAME}_node
+target_link_libraries(LaneKeepingSystem_node
   modules
   ${YAML_CPP_LIBRARIES}
   ${catkin_LIBRARIES}
