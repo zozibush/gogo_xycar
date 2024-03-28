@@ -24,6 +24,7 @@ LaneKeepingSystem<PREC>::LaneKeepingSystem()
     mPID = std::make_unique<PIDController<PREC>>(config["PID"]["P_GAIN"].as<PREC>(), config["PID"]["I_GAIN"].as<PREC>(), config["PID"]["D_GAIN"].as<PREC>());
     mMovingAverage = std::make_unique<MovingAverageFilter<PREC>>(config["MOVING_AVERAGE_FILTER"]["SAMPLE_SIZE"].as<uint32_t>());
     mHoughTransformLaneDetector = std::make_unique<HoughTransformLaneDetector<PREC>>(config);
+    mStanleyController = std::make_unique<StanleyController<PREC>>(config["STANLEY"]["S_GAIN"].as<double>(), config["STANLEY"]["LOOK_AHEAD_DISTANCE"].as<double>());
     setParams(config);
 
     mPublisher = mNodeHandler.advertise<xycar_msgs::xycar_motor>(mPublishingTopicName, mQueueSize);

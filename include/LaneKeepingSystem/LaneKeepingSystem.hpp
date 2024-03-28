@@ -22,6 +22,7 @@
 #include "LaneKeepingSystem/HoughTransformLaneDetector.hpp"
 #include "LaneKeepingSystem/MovingAverageFilter.hpp"
 #include "LaneKeepingSystem/PIDController.hpp"
+#include "LaneKeepingSystem/StanleyController.hpp"
 
 namespace Xycar {
 /**
@@ -37,6 +38,7 @@ public:
     using ControllerPtr = typename PIDController<PREC>::Ptr;            ///< Pointer type of PIDController
     using FilterPtr = typename MovingAverageFilter<PREC>::Ptr;          ///< Pointer type of MovingAverageFilter
     using DetectorPtr = typename HoughTransformLaneDetector<PREC>::Ptr; ///< Pointer type of LaneDetector
+    using StanleyPtr = typename StanleyController<PREC>::Ptr;
 
     static constexpr int32_t kXycarSteeringAangleLimit = 50; ///< Xycar Steering Angle Limit
     static constexpr double kFrameRate = 33.0;               ///< Frame rate
@@ -83,6 +85,7 @@ private:
     ControllerPtr mPID;                      ///< PID Class for Control
     FilterPtr mMovingAverage;                ///< Moving Average Filter Class for Noise filtering
     DetectorPtr mHoughTransformLaneDetector; ///< Hough Transform Lane Detector Class for Lane Detection
+    StanleyPtr mStanleyController;
 
     // ROS Variables
     ros::NodeHandle mNodeHandler;          ///< Node Hanlder for ROS. In this case Detector and Controler

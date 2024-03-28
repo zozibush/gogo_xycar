@@ -24,6 +24,8 @@ template <typename PREC>
 class StanleyController : public Controller<PREC>
 {
 public:
+    using Ptr = std::unique_ptr<StanleyController>;
+
     /**
      *  이 코드는 예제로서, 알맞은 방법으로 자유롭게 수정하셔야 합니다
      */
