@@ -2,11 +2,17 @@
 
 ## Introduce
 
-xycar run with
+xycar driving on black tape lane
 
+with
+- Moving Average Filter
 - Lane detection with OpenCV
-- Stanley method
 - PID Controller
+
+# Run
+```bash
+roslaunch gogo_xycar drive.launch
+```
 
 ## License
 
